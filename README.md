@@ -14,7 +14,7 @@ System.out.println(db.executeQuery("SELECT * FROM `my-database`.`my-table`").toS
 ```
 
 # Why not just use JDBC?
-While JDBC is useful, it requires lots of boilerplate code that makes even doing the simplest of tasks a pain to write. With UDB, you can connect to a database and execute queries quickly, without any unnecesary setup. Plus, if you find you need to access a JDBC API, you can simply getJDBCResultSet() on [QueryResults](https://termer.net/javadocs/universaldb/1.0/net/termer/udb/QueryResult.html), and getConnection() on [SQLDatabaseAdapters](https://termer.net/javadocs/universaldb/1.0/net/termer/udb/sql/SQLDatabaseAdapter.html).
+While JDBC is useful, it requires lots of boilerplate code that makes even doing the simplest of tasks a pain to write. With UDB, you can connect to a database and execute queries quickly, without any unnecesary setup. Plus, if you find you need to access a JDBC API, you can simply getJDBCResultSet() on [QueryResults](https://github.com/TermerMC/UniversalDB/blob/master/net/termer/udb/QueryResult.java), and getConnection() on [SQLDatabaseAdapters](https://github.com/TermerMC/UniversalDB/blob/master/net/termer/udb/sql/SQLDatabaseAdapter.java).
 
 # Javadoc, please
 [Here you go!](https://termer.net/javadocs/universaldb/);
