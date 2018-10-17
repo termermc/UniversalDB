@@ -30,6 +30,14 @@ public interface SQLDatabaseAdapter extends DatabaseAdapter {
 	public void setReconnectOnError(boolean reconnect);
 	
 	/**
+	 * Returns whether the database should reconnect if there is a connection error
+	 * when executing a query, as well as if the query should be re-sent.
+	 * @return whether the database should reconnect when a connection error occurs
+	 * @since 1.1
+	 */
+	public boolean getReconnectOnError();
+	
+	/**
 	 * Executes the specified JDBC PreparedStatement and returns the results
 	 * JDBC PrepatedStatements allow easy manipulation of SQL statements and
 	 * minimize the risk of SQL injection attacks. To obtain a new Prepared Statement,
