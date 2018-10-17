@@ -16,6 +16,9 @@ import net.termer.udb.sql.SQLQueryResult;
  * @since 1.0
  */
 public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
+	// Whether the database should reconnect in the case of a connection error
+	private boolean _RECONNECT_ = false;
+	
 	// Database connection
 	private Connection conn = null;
 	
@@ -126,5 +129,9 @@ public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
 	
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
 		return conn.prepareStatement(sql);
+	}
+	
+	public void setReconnectOnError(boolean reconnect) {
+		_RECONNECT_ = reconnect;
 	}
 }

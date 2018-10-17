@@ -20,6 +20,9 @@ public class MySQLDatabaseAdapter implements SQLDatabaseAdapter {
 	// Whether the Driver has been loaded
 	private boolean _DRIVER_LOADED_ = false;
 	
+	// Whether the database should reconnect in the case of a connection error
+	private boolean _RECONNECT_ = false;
+	
 	// Database connection
 	private Connection conn = null;
 	
@@ -146,5 +149,9 @@ public class MySQLDatabaseAdapter implements SQLDatabaseAdapter {
 	
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
 		return conn.prepareStatement(sql);
+	}
+	
+	public void setReconnectOnError(boolean reconnect) {
+		_RECONNECT_ = reconnect;
 	}
 }
