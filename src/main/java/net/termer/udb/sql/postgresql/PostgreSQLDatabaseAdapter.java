@@ -134,4 +134,8 @@ public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
 	public void setReconnectOnError(boolean reconnect) {
 		_RECONNECT_ = reconnect;
 	}
+	
+	public boolean getReconnectOnError() {
+		return _RECONNECT_;
+	}
 }
