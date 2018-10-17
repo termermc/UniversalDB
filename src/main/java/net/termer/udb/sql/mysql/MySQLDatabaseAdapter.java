@@ -113,17 +113,34 @@ public class MySQLDatabaseAdapter implements SQLDatabaseAdapter {
 	 * @param statement the SQL statement to execute
 	 * @return the results of the SQL statement
 	 * @throws SQLException if something goes wrong with the database connection
+	 * @throws ClassNotFoundException if reconnection to database fails
+	 * @throws IllegalAccessException if reconnection to database fails
+	 * @throws InstantiationException if reconnection to database fails
 	 * @since 1.0
 	 */
-	public SQLQueryResult executeQuery(String statement) throws SQLException {
+	public SQLQueryResult executeQuery(String statement) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		SQLQueryResult result = null;
 		
 		// Creates the statement
 		Statement stmt = conn.createStatement();
 		
-		// Check if the statement succeeds
-		if(stmt.execute(statement)) {
-			result = SQLDatabaseUtils.ConvertResultSetToSQLQueryResult(stmt.getResultSet());
+		try {
+			// Check if the statement succeeds
+			if(stmt.execute(statement)) {
+				result = SQLDatabaseUtils.ConvertResultSetToSQLQueryResult(stmt.getResultSet());
+			}
+		} catch(SQLException e) {
+			throw e;
+		} catch(Exception e) {
+			// If reconnection is enabled, reconnect and resend the query
+			if(_RECONNECT_) {
+				disconnect();
+				connect();
+				// Check if the statement succeeds
+				if(stmt.execute(statement)) {
+					result = SQLDatabaseUtils.ConvertResultSetToSQLQueryResult(stmt.getResultSet());
+				}
+			}
 		}
 		
 		return result;
@@ -133,15 +150,29 @@ public class MySQLDatabaseAdapter implements SQLDatabaseAdapter {
 		return conn;
 	}
 
-	public SQLQueryResult executeQuery(PreparedStatement statement) throws SQLException {
+	public SQLQueryResult executeQuery(PreparedStatement statement) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		SQLQueryResult result = null;
 		
 		// Creates the statement
 		PreparedStatement stmt = statement;
 		
-		// Check if the statement succeeds
-		if(stmt.execute()) {
-			result = SQLDatabaseUtils.ConvertResultSetToSQLQueryResult(stmt.getResultSet());
+		try {
+			// Check if the statement succeeds
+			if(stmt.execute()) {
+				result = SQLDatabaseUtils.ConvertResultSetToSQLQueryResult(stmt.getResultSet());
+			}
+		} catch(SQLException e) {
+			throw e;
+		} catch(Exception e) {
+			// If reconnection is enabled, reconnect and resend the query
+			if(_RECONNECT_) {
+				disconnect();
+				connect();
+				// Check if the statement succeeds
+				if(stmt.execute()) {
+					result = SQLDatabaseUtils.ConvertResultSetToSQLQueryResult(stmt.getResultSet());
+				}
+			}
 		}
 		
 		return result;

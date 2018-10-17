@@ -17,9 +17,12 @@ public interface SQLDatabaseAdapter extends DatabaseAdapter {
 	 * results as an SQLQueryResult object
 	 * @param statement the SQL statement to execute
 	 * @return the result as an SQLQueryResult object
+	 * @throws ClassNotFoundException if reconnection to database fails
+	 * @throws IllegalAccessException if reconnection to database fails
+	 * @throws InstantiationException if reconnection to database fails
 	 * @since 1.0
 	 */
-	public SQLQueryResult executeQuery(String statement) throws SQLException;
+	public SQLQueryResult executeQuery(String statement) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 	
 	/**
 	 * Sets whether the database should reconnect if there is a connection error
@@ -45,9 +48,12 @@ public interface SQLDatabaseAdapter extends DatabaseAdapter {
 	 * @param statement the JDBC PreparedStatement to execute
 	 * @return the results of the SQL statement
 	 * @throws SQLException if something goes wrong with the database connection
+	 * @throws ClassNotFoundException if reconnection to database fails
+	 * @throws IllegalAccessException if reconnection to database fails 
+	 * @throws InstantiationException if reconnection to database fails
 	 * @since 1.0
 	 */
-	public SQLQueryResult executeQuery(PreparedStatement statement) throws SQLException;
+	public SQLQueryResult executeQuery(PreparedStatement statement) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 	
 	/**
 	 * Returns the SQL connection to this database, if any
