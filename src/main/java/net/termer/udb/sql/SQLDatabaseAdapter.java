@@ -22,6 +22,14 @@ public interface SQLDatabaseAdapter extends DatabaseAdapter {
 	public SQLQueryResult executeQuery(String statement) throws SQLException;
 	
 	/**
+	 * Sets whether the database should reconnect if there is a connection error
+	 * when executing a query, as well as if the query should be re-sent.
+	 * @param whether the database should reconnect when a connection error occurs
+	 * @since 1.1
+	 */
+	public void setReconnectOnError(boolean reconnect);
+	
+	/**
 	 * Executes the specified JDBC PreparedStatement and returns the results
 	 * JDBC PrepatedStatements allow easy manipulation of SQL statements and
 	 * minimize the risk of SQL injection attacks. To obtain a new Prepared Statement,
