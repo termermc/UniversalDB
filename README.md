@@ -21,3 +21,6 @@ While JDBC is useful, it requires lots of boilerplate code that makes even doing
 
 # Where can I learn more?
 Visit the [wiki](https://github.com/TermerMC/UniversalDB/wiki) to learn more and how to use UDB!
+
+# Planned features
+Currently, integration with HikariCP is in the works. When finished, it should work seamlessly with the existing MySQLDatabaseAdapter class.
