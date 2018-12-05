@@ -5,4 +5,12 @@
   <version>1.0</version>
   <name>UniversalDB</name>
   <description>Simple, no-nonsense Java database library</description>
+  <dependencies>
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>2.7.8</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
 </project>
