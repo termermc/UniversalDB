@@ -16,6 +16,9 @@ import net.termer.udb.sql.SQLQueryResult;
  * @since 1.0
  */
 public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
+	// Whether the Driver has been loaded
+	private boolean _DRIVER_LOADED_ = false;
+	
 	// Whether the database should reconnect in the case of a connection error
 	private boolean _RECONNECT_ = false;
 	
@@ -73,7 +76,10 @@ public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
 
 	public void connect() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// Setup DriverManager
-		Class.forName("org.postgresql.Driver").newInstance();
+		if(!_DRIVER_LOADED_) {
+			Class.forName("org.postgresql.Driver").newInstance();
+			_DRIVER_LOADED_ = true;
+		}
 		
 		// Generate connection URL
 		String connAddr = "jdbc:postgresql://"+_ADDRESS_;
