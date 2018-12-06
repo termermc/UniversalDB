@@ -77,7 +77,7 @@ public class HikariMySQLDatabaseAdapter implements SQLDatabaseAdapter {
 	}
 	
 	/**
-	 * Sets up a connection to the specified MySQL database
+	 * Sets up a connection pool to the specified MySQL database
 	 * @throws ClassNotFoundException if the MySQL driver class is not found
 	 * @throws IllegalAccessException if you do not have access to the MySQL driver class
 	 * @throws InstantiationException if instantiating a new MySQL driver class fails
