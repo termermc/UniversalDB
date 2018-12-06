@@ -102,6 +102,9 @@ public class HikariMySQLDatabaseAdapter implements SQLDatabaseAdapter {
 		_HIKARI_.addDataSourceProperty("cachePrepStmts", "true");
 		_HIKARI_.addDataSourceProperty("prepStmtCacheSize", "250");
 		_HIKARI_.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+		
+		// Create pool by requesting a Connection
+		getNextConnection();
 	}
 	
 	/**
