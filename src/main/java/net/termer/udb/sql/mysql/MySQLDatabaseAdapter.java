@@ -105,7 +105,7 @@ public class MySQLDatabaseAdapter implements SQLDatabaseAdapter {
 	 * @since 1.0
 	 */
 	public void disconnect() throws SQLException {
-		conn.close();
+		getConnection().close();
 	}
 	
 	/**
@@ -122,7 +122,7 @@ public class MySQLDatabaseAdapter implements SQLDatabaseAdapter {
 		SQLQueryResult result = null;
 		
 		// Creates the statement
-		Statement stmt = conn.createStatement();
+		Statement stmt = getConnection().createStatement();
 		
 		try {
 			// Check if the statement succeeds
@@ -179,7 +179,7 @@ public class MySQLDatabaseAdapter implements SQLDatabaseAdapter {
 	}
 	
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
-		return conn.prepareStatement(sql);
+		return getConnection().prepareStatement(sql);
 	}
 	
 	public void setReconnectOnError(boolean reconnect) {

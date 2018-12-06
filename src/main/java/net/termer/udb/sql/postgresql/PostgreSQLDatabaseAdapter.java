@@ -91,7 +91,7 @@ public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
 	}
 
 	public void disconnect() throws SQLException {
-		conn.close();
+		getConnection().close();
 	}
 	
 	/**
@@ -108,7 +108,7 @@ public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
 		SQLQueryResult result = null;
 		
 		// Creates the statement
-		Statement stmt = conn.createStatement();
+		Statement stmt = getConnection().createStatement();
 		
 		try {
 			// Check if the statement succeeds
@@ -165,7 +165,7 @@ public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
 	}
 	
 	public PreparedStatement prepareStatement(String sql) throws SQLException {
-		return conn.prepareStatement(sql);
+		return getConnection().prepareStatement(sql);
 	}
 	
 	public void setReconnectOnError(boolean reconnect) {
