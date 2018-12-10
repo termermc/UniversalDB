@@ -73,6 +73,24 @@ public class PostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
 		_USER_ = user;
 		_PASSWORD_ = password;
 	}
+	
+	/**
+	 * Stores values to use for connecting to the database
+	 * @param address the address of the database
+	 * @param port the database port
+	 * @param dbname the name of the database
+	 * @param user the user to log into
+	 * @param password the password for the user
+	 * @since 1.0
+	 */
+	public PostgreSQLDatabaseAdapter(String address, String port, String dbname, String user, String password) {
+		// Store values
+		_ADDRESS_ = address;
+		_PORT_ = Integer.parseInt(port);
+		_DBNAME_ = dbname;
+		_USER_ = user;
+		_PASSWORD_ = password;
+	}
 
 	public void connect() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// Setup DriverManager

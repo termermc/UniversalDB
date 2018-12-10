@@ -76,6 +76,24 @@ public class HikariPostgreSQLDatabaseAdapter implements SQLDatabaseAdapter {
 	}
 	
 	/**
+	 * Stores values to use for connecting to the database
+	 * @param address the address of the database
+	 * @param port the database port
+	 * @param dbname the name of the database
+	 * @param user the user to log into
+	 * @param password the password for the user
+	 * @since 1.1
+	 */
+	public HikariPostgreSQLDatabaseAdapter(String address, String port, String dbname, String user, String password) {
+		// Store values
+		_ADDRESS_ = address;
+		_PORT_ = Integer.parseInt(port);
+		_DBNAME_ = dbname;
+		_USER_ = user;
+		_PASSWORD_ = password;
+	}
+	
+	/**
 	 * Sets up a connection pool to the specified PostgreSQL database
 	 * @throws ClassNotFoundException if the PostgreSQL driver class is not found
 	 * @throws IllegalAccessException if you do not have access to the PostgreSQL driver class
