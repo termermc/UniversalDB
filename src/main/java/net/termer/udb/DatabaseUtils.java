@@ -70,7 +70,12 @@ public class DatabaseUtils {
 				
 				// Fields
 				for(ResultField field : row.getFields()) {
-					html+="    <td>"+field.getValueAsString()+"</td>\n";
+					html+="    <td>"+
+								field.getValueAsString()
+									.replace("<", "&lt")
+									.replace(">", "&gt")
+									.replace("&", "&amp")
+								+"</td>\n";
 				}
 				
 				html+="  </tr>\n";
