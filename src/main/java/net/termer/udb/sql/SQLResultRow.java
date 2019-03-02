@@ -15,10 +15,12 @@ public class SQLResultRow extends ResultRow implements JDBCElement {
 	/**
 	 * Sets up values
 	 * @param fields the fields in this row
+	 * @param index the index of this row
+	 * @param columns the columns
 	 * @param rs the JDBC ResultSet corresponding to this row
 	 */
-	public SQLResultRow(SQLResultField[] fields, int index, ResultSet rs) {
-		super(fields,index);
+	public SQLResultRow(SQLResultField[] fields, int index, SQLResultColumn[] columns, ResultSet rs) {
+		super(fields,index,columns);
 		RESULT_SET = rs;
 	}
 	

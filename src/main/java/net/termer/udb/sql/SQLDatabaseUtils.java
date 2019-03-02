@@ -93,7 +93,13 @@ public class SQLDatabaseUtils extends DatabaseUtils {
 						fields.add(new SQLResultField(null,col,i,rs));
 					}
 				}
-				SQLResultRow row = new SQLResultRow(fields.toArray(new SQLResultField[0]),index,rs);
+				
+				SQLResultRow row = new SQLResultRow(
+					fields.toArray(new SQLResultField[0]),
+					index,
+					columns.toArray(new SQLResultColumn[0]),
+					rs
+				);
 				for(SQLResultField field : row.getFields()) {
 					field.setRow(row);
 				}

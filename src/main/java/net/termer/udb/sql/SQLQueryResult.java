@@ -17,7 +17,7 @@ public class SQLQueryResult extends QueryResult implements JDBCElement {
 		super(columns, rows);
 		RESULT_SET = rs;
 	}
-
+	
 	public ResultSet getJDBCResultSet() {
 		return RESULT_SET;
 	}
