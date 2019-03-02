@@ -72,9 +72,9 @@ public class DatabaseUtils {
 				for(ResultField field : row.getFields()) {
 					html+="    <td>"+
 								field.getValueAsString()
+									.replace("&", "&amp")
 									.replace("<", "&lt")
 									.replace(">", "&gt")
-									.replace("&", "&amp")
 								+"</td>\n";
 				}
 				
