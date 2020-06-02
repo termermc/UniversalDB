@@ -17,7 +17,7 @@ System.out.println(db.executeQuery("SELECT * FROM `my-database`.`my-table`").toS
 While JDBC is useful, it requires lots of boilerplate code that makes even doing the simplest of tasks a pain to write. With UDB, you can connect to a database and execute queries quickly, without any unnecesary setup. Plus, if you find you need to access a JDBC API, you can simply getJDBCResultSet() on [QueryResults](https://github.com/TermerMC/UniversalDB/blob/master/net/termer/udb/QueryResult.java), and getConnection() on [SQLDatabaseAdapters](https://github.com/TermerMC/UniversalDB/blob/master/net/termer/udb/sql/SQLDatabaseAdapter.java).
 
 # Javadoc, please
-[Here you go!](https://termer.net/javadocs/universaldb/);
+[Here you go!](https://termer.net/javadoc/universaldb/);
 
 # Where can I learn more?
 Visit the [wiki](https://github.com/TermerMC/UniversalDB/wiki) to learn more and how to use UDB!
